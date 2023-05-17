@@ -25,6 +25,8 @@ public class Account{
 
     private String fullName;
     private String mobileNumber;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String cardNumber;
 
     @Column(name = "balance")

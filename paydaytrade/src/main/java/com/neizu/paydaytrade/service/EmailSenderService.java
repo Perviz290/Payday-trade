@@ -13,19 +13,22 @@ public class EmailSenderService {
 
     private final JavaMailSender javaMailSender;
 
-
-
-    public void sendEmail(String toEmail,String subject,String message){
-        SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
-
-        simpleMailMessage.setFrom("");
-        simpleMailMessage.setTo(toEmail);
-        simpleMailMessage.setText(message);
-        simpleMailMessage.setSubject(subject);
-
-
-
+    public void sendEmail(String toEmail,
+                          String subject,
+                          String body) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("javaspring46@gmail.com");
+        message.setTo(toEmail);
+        message.setText(body);
+        message.setSubject(subject);
+        javaMailSender.send(message);
+        System.out.println("mail sent successfully");
     }
+
+
+
+
+
 
 
 

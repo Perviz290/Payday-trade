@@ -55,7 +55,6 @@ public class AccountService {
                 .map(accountConverter::converterAccount).collect(Collectors.toList());
     }
 
-
     public AccountDto getAccountById(Integer id) {
         Account account=findById(id);
         return accountConverter.converterAccount(account);
@@ -77,6 +76,9 @@ public class AccountService {
         return accountRepo.findById(id)
                 .orElseThrow(() -> new AccountNotFoundException( (id + "-This Account is NotFound")));
     }
+
+
+
 
 
 
