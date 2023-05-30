@@ -1,20 +1,18 @@
 package com.neizu.paydaytrade.util;
 
 
-import com.neizu.paydaytrade.dto.StockDto;
+import com.neizu.paydaytrade.dto.FinanceStockDto;
+import com.neizu.paydaytrade.entity.StockFinance;
 import org.springframework.stereotype.Component;
-import yahoofinance.Stock;
 
 @Component
 public class StockConverter {
 
-    public StockDto converterStock(Stock stock){
-        StockDto stockDto=StockDto.builder()
+    public FinanceStockDto converterStock(StockFinance stock){
+        FinanceStockDto stockDto= FinanceStockDto.builder()
                 .name(stock.getName())
-                .price(stock.getQuote().getPrice())
-                .bid(stock.getQuote().getBid())
-                .currency(stock.getCurrency())
-                .change(stock.getQuote().getChange())
+                .price(stock.getPrice())
+                .change(stock.getChanged())
                 .build();
         return stockDto;
     }

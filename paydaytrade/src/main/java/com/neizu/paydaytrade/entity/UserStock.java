@@ -1,35 +1,35 @@
 package com.neizu.paydaytrade.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Builder
-@Table(name = "user_stocks", schema = "payday_trade")
 public class UserStock {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "id")
-    private int id;
-    @Basic
-    @Column(name = "stock_name")
+    private Integer id;
+
     private String stockName;
-    @Basic
-    @Column(name = "stock_price")
-    private Double stockPrice;
+
+    private BigDecimal stockPrice;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+
+    public UserStock(String stockName, BigDecimal stockPrice, User user) {
+        this.stockName = stockName;
+        this.stockPrice = stockPrice;
+        this.user = user;
+    }
 }

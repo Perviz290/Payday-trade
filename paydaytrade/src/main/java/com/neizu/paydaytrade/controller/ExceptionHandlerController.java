@@ -57,6 +57,33 @@ public class ExceptionHandlerController {
                     .build();
         }
 
+    @ExceptionHandler(FinanceStockNotFoundException.class)
+    public ErrorResponse handleFinanceStockNotFoundException(FinanceStockNotFoundException e){
+        return ErrorResponse.builder()
+                .message(e.getMessage())
+                .date(LocalDateTime.now())
+                .errorCode(HttpStatus.NOT_FOUND)
+                .build();
+    }
+
+    @ExceptionHandler(CheckCardNumberNotFoundException.class)
+    public ErrorResponse handleCheckCardNumberNotFoundException(CheckCardNumberNotFoundException e){
+        return ErrorResponse.builder()
+                .message(e.getMessage())
+                .date(LocalDateTime.now())
+                .errorCode(HttpStatus.NOT_FOUND)
+                .build();
+    }
+
+    @ExceptionHandler(EnoughMoneyException.class)
+    public ErrorResponse handleEnoughMoneyException(EnoughMoneyException e){
+        return ErrorResponse.builder()
+                .message(e.getMessage())
+                .date(LocalDateTime.now())
+                .errorCode(HttpStatus.BAD_REQUEST)
+                .build();
+    }
+
 
 
 

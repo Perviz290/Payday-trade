@@ -1,5 +1,7 @@
 package com.neizu.paydaytrade.controller;
 import com.neizu.paydaytrade.dto.UserStockDto;
+import com.neizu.paydaytrade.dto.request.BuyUserStockRequest;
+import com.neizu.paydaytrade.dto.request.CreateUserRequest;
 import com.neizu.paydaytrade.service.UserStockService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,15 @@ public class UserStockController {
     public UserStockDto findUserStockByUserId(@PathVariable Integer id) {
         return userStockService.findUserStockByUserId(id);
     }
+
+    @PostMapping("/add")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void buyStockTargetPrice(@RequestBody BuyUserStockRequest buyUserStockRequest) {
+        userStockService.buyStockTargetPrice(buyUserStockRequest);
+    }
+
+
+
 
 
 

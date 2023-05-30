@@ -1,8 +1,9 @@
 package com.neizu.paydaytrade.entity;
 
 import lombok.*;
-
 import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -10,7 +11,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Builder
-public class Bank {
+public class StockFinance implements Serializable {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +21,11 @@ public class Bank {
 
     private String name;
 
-    @Column(nullable = false, updatable = false)
-    private String cardNumber;
+    private BigDecimal price;
+
+    private BigDecimal changed;
+
+
 
 
 

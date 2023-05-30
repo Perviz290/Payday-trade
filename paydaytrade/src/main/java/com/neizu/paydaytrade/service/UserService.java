@@ -66,10 +66,14 @@ public class UserService {
        return userConverter.converterUserAccount(user);
     }
 
-    protected User findById(Integer id) {
-        return userRepo.findById(id)
-                .orElseThrow(() -> new UserNotFoundException
-                        (id + "-is userId NotFound"));
+    public User findById(Integer id) {
+        Optional<User>userOptional=userRepo.findById(id);
+        if (userOptional.isEmpty()){
+            throw new UserNotFoundException
+                    (id + "-is userId NotFound");
+        }else {
+            return userOptional.get();
+        }
     }
 
 
